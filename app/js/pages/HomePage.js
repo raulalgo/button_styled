@@ -8,7 +8,7 @@ import Button         from '../components/Button'
 import RipplerButton  from '../components/RipplerButton'
 import Rippler        from '../components/Rippler'
 import LevelFrame     from '../components/LevelFrame'
-import LevelOne       from '../components/levels/LevelOne'
+import LevelStyle       from '../components/levels/LevelStyle'
 
 const propTypes = {
   currentUser: React.PropTypes.object
@@ -39,10 +39,7 @@ class HomePage extends React.Component {
     return (
       <DocumentTitle title="Home">
         <section className="home-page">
-          Home Page
-          <LevelFrame >
-            <LevelOne />
-          </LevelFrame >
+          <LevelStyle />
         </section>
       </DocumentTitle>
     );
@@ -68,3 +65,12 @@ class HomePage extends React.Component {
 HomePage.propTypes = propTypes;
 
 export default HomePage;
+
+/*<DocumentTitle title="Home">
+  <section className="home-page">
+    Home Page
+    <LevelFrame >
+      <LevelStyle />
+    </LevelFrame >
+  </section>
+</DocumentTitle>*/
