@@ -4,6 +4,8 @@ import React         from 'react';
 import {Link}        from 'react-router';
 import DocumentTitle from 'react-document-title';
 
+import Theme          from  '../components/Theme'
+
 import Button         from  '../components/Button'
 import RipplerButton  from  '../components/RipplerButton'
 import Rippler        from  '../components/Rippler'
@@ -54,9 +56,7 @@ class LevelPage extends React.Component {
     return (
       <DocumentTitle title="Level">
         <section className="level-page">
-          <LevelFrame currentLevel={this.props.currentLevel} pushLevel={this.pushLevel} >
-            <LevelStyle />
-          </LevelFrame >
+          <Theme />
         </section>
       </DocumentTitle>
     );
@@ -94,6 +94,10 @@ export default LevelPage;
 
 
 /*
+<LevelFrame currentLevel={this.props.currentLevel} pushLevel={this.pushLevel} >
+  <LevelStyle />
+</LevelFrame >
+
 <LevelOne />
 <LevelTwo />
 <LevelThree />

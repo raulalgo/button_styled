@@ -24,26 +24,46 @@ const Boton = styled.section`
   border-radius: 4px;
   margin: 12px auto;
 
-  background-color: #2F80ED;
-
   width: 400px;
   height: 120px;
 
   transition: box-shadow 0.1s ease;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
 
   animation: falling 0.4s;
-
-  &:hover {
+  &.lightOn {
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+  }
+  &.lightOn:hover {
     transition: box-shadow 0.1s ease;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.24), 0px 0px 8px rgba(0, 0, 0, 0.12);
     cursor: pointer;
   }
 
-  &:active {
+  &.lightOn:active {
     transition: box-shadow 0.1s ease;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
     cursor: pointer;
+  }
+
+  &.start {
+    background-color: ${props => props.theme.start};
+  }
+
+  &.exit {
+    background-color: ${props => props.theme.exit};
+  }
+
+  &.white {
+    background-color: ${props => props.theme.white};
+  }
+
+  &.grey {
+    background-color: ${props => props.theme.grey};
+  }
+
+  &.lightOff {
+    background-color: ${props => props.theme.grey};
+    box-shadow: none;
   }
 `;
 
@@ -54,7 +74,8 @@ class Button extends React.Component {
 
   constructor(props) {
     super(props);
-    this.transitionIn = this.transitionIn.bind(this)
+
+    /*this.transitionIn = this.transitionIn.bind(this)
 
     if (this.props.orientation != "vertical" ) {
       this.orientation = "horizontal"
@@ -74,15 +95,14 @@ class Button extends React.Component {
           transition  : "display_none",
           show        : false
       }
-    }
+    }*/
     //this.transition = this.props.transition
   }
 
   render() {
     return (
       <div>
-        <Boton className={"button wide"} />
-         <div className={"button wide " + this.orientation + " " + this.props.color + " " + this.state.transition + " " + this.props.extra + " " + this.state.shadow} onClick={this.props.onClick} ></div>
+        <Boton className={"button wide " + this.props.color + this.props.lights} />
       </div>
     )
   }
@@ -123,3 +143,7 @@ class Button extends React.Component {
 }
 
 export default Button;
+
+/*
+<div className={"button wide " + this.orientation + " " + this.props.color + " " + this.state.transition + " " + this.props.extra + " " + this.state.shadow} onClick={this.props.onClick} ></div>
+*/
