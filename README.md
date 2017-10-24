@@ -6,7 +6,7 @@ This is an attempt at an experiment around the ideas of interaction and visual d
 
 This project makes use of [React Rocket](https://github.com/jakemmarsh/react-rocket-boilerplate) boilerplate.
 
-1. Clone this repo from `https://github.com/raulalgo/button_rr`
+1. Clone this repo from `https://github.com/raulalgo/button_styled`
 2. Run `npm install` from the root directory
 3. Run `gulp dev` (may require installing Gulp globally `npm install gulp -g`)
 4. Your browser will automatically be opened and directed to the browser-sync proxy address
