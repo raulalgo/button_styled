@@ -18,7 +18,8 @@ class ThemedGame extends React.Component {
     return(
       <div>
         <Button color="white " lights="lightOn " />
-        <TogglerButton />
+        <TogglerButton active={true} />
+        <TogglerButton active={false} />
       </div>
     )
   }

@@ -30,7 +30,6 @@ const Boton = styled.section`
   transition: box-shadow 0.1s ease;
 
   animation: falling 0.4s;
-
   &.lightOn {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
   }
