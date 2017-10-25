@@ -51,7 +51,6 @@ class LevelPage extends React.Component {
   }
 
   render() {
-    console.log("home render");
     //const t_w_classes = this.t_w_classes
     return (
       <DocumentTitle title="Level">
