@@ -1,3 +1,4 @@
+/*THIS IS STYLED*/
 'use strict';
 
 import React         from 'react';
@@ -55,7 +56,12 @@ class LevelPage extends React.Component {
     return (
       <DocumentTitle title="Level">
         <section className="level-page">
-          <Theme />
+          <Theme>
+            <LevelFrame currentLevel={this.props.currentLevel} pushLevel={this.pushLevel}>
+              <LevelOne />
+              <LevelTwo />
+            </LevelFrame>
+          </Theme>
         </section>
       </DocumentTitle>
     );

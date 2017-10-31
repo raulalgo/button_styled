@@ -1,9 +1,16 @@
 'use strict'
 
 import React          from  'react';
+import styled         from  'styled-components';
+
 import Button         from  '../Button'
 import RipplerButton  from  '../RipplerButton'
-import GameBoard      from  '../GameBoard'
+//import GameBoard      from  '../GameBoard'
+
+const GameBoard = styled.div`
+  height: ${props => props.theme.button_height};
+  margin: 20px auto;
+`;
 
 class LevelOne extends React.Component {
   transition;
@@ -26,17 +33,17 @@ class LevelOne extends React.Component {
   }
   render() {
     if(this.state.solved){
-      this.exitButton = <RipplerButton color="orange" transition="fall" onClick={this.props.newLevel} lights={true} />
+      this.exitButton = <RipplerButton color="exit " transition="fall" onClick={this.props.newLevel} lights="lightOn " />
       console.log("this.exitButton");
     } else {
       this.exitButton = ""
     }
     return (
       <div className="boardWrapper">
-        <GameBoard height="height_1 m20">
+        <GameBoard>
           {this.exitButton}
         </GameBoard>
-        <Button color="blue" delay="0" transition="fall" hidden={false} onClick={this.resolve} extra={this.state.extra} lights={true}/>
+        <Button color="start " delay="0" transition="fall" hidden={false} onClick={this.resolve} extra={this.state.extra} lights="lightOn "/>
       </div>
     )
   }

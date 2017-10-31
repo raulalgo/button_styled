@@ -32,9 +32,7 @@ class LevelOne extends React.Component {
     //   this.exitButton = ""
     // }
     return (
-      <div>
-        <RipplerButton color="orange" transition="fall" onClick={this.nextLevel} lights={true} />
-      </div>
+        <RipplerButton color="exit " transition="fall " onClick={this.nextLevel} lights="lightOn " />
     )
   }
 

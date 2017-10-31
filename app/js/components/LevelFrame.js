@@ -1,13 +1,17 @@
 'use strict'
 
-import React    from 'react';
-import LevelOne from  './levels/LevelOne';
-import Button   from  './Button'
+import React        from  'react';
+import styled       from  'styled-components';
+
+const Frame = styled.div`
+
+  &.fadeOut {
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+  }
+`;
 
 class LevelFrame extends React.Component {
-  counter;
-  newFamily
-
   constructor(props) {
     super(props);
 
@@ -15,22 +19,23 @@ class LevelFrame extends React.Component {
     this.newLevel = this.newLevel.bind(this);
 
     this.state = {
-      currentLevel  : 0,
-      frameTransition    : ""
+      currentLevel    : 0,
+      frameTransition : " "
     }
 
     this.appendProps();
-    //this.currentLevel = 0;
-    console.log("Bona nit, in LevelFrame the currentLevel is: " + this.props.currentLevel);
+    console.log("current level is: " + this.props.currentLevel);
   }
 
-  render() {
+  render(){
     return (
       <div className={this.state.frameTransition}>
         {this.newFamily[this.props.currentLevel]}
       </div>
     )
   }
+
+  /* Functions */
 
   nextLevel() {
     // var counter = this.state.currentLevel;
@@ -74,8 +79,4 @@ class LevelFrame extends React.Component {
     return this.newFamily;
   }
 }
-
-export default LevelFrame;
-
-
-//         <Button color="grey" onClick={this.nextLevel} />
+export default LevelFrame

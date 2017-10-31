@@ -13,11 +13,14 @@ var greyish_blue = "#AABCCC"
 var white = "#FFF";
 var grey = "#CCC";
 
+var button_height = "120px"
+
 const theme = {
   start: blue,
   exit: orange,
   white: white,
-  grey: grey
+  grey: grey,
+  button_height: button_height
 }
 
 class Theme extends React.Component {
@@ -28,7 +31,7 @@ class Theme extends React.Component {
   render() {
     return(
       <ThemeProvider theme={theme}>
-        <ThemedGame />
+        {this.props.children}
       </ThemeProvider>
     );
   }
