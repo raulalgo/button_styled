@@ -1,9 +1,11 @@
-'use strict'
+// New styled components approved
+
+'use strict';
 
 import React          from 'react';
-import Button         from '../Button'
-import RipplerButton  from '../RipplerButton'
-import LevelFrame     from '../LevelFrame'
+import Button         from '../Button';
+import RipplerButton  from '../RipplerButton';
+import LevelFrame     from '../LevelFrame';
 
 class LevelOne extends React.Component {
   transition;
@@ -20,40 +22,40 @@ class LevelOne extends React.Component {
     this.state = {
       orangeHidden  : true,
       solved        : false,
-      extra         : ""
-    }
+      extra         : ''
+    };
     this.solved = false;
   }
   render() {
     // if(this.state.solved){
-    //   this.exitButton = <RipplerButton color="orange" transition="fall" onClick={this.nextLevel} />
-    //   console.log("this.exitButton");
+    //   this.exitButton = <RipplerButton color='orange' transition='fall' onClick={this.nextLevel} />
+    //   console.log('this.exitButton');
     // } else {
-    //   this.exitButton = ""
+    //   this.exitButton = '
     // }
     return (
-        <RipplerButton color="exit " transition="fall " onClick={this.nextLevel} lights="lightOn " />
-    )
+        <RipplerButton color='exit ' transition='fall ' onClick={this.nextLevel} lights='lightOn ' />
+    );
   }
 
   handleClick () {
-    console.log("click");
+    console.log('click');
     this.setState({
       orangeHidden  : false
-    })
+    });
 
   }
 
   resolve() {
     this.setState({
       solved  : true,
-      extra   : "deactivate"
+      extra   : 'deactivate'
     });
-    console.log("resolve");
+    console.log('resolve');
   }
 
   nextLevel() {
-    console.log("Next Level");
+    console.log('Next Level');
     //onsole.log(this.props.message);
     this.props.newLevel();
   }

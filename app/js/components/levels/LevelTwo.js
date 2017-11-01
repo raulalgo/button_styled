@@ -43,7 +43,7 @@ class LevelOne extends React.Component {
         <GameBoard>
           {this.exitButton}
         </GameBoard>
-        <Button color="start " delay="0" transition="fall" hidden={false} onClick={this.resolve} extra={this.state.extra} lights="lightOn "/>
+        <Button color="start " delay="0" transition="fall " hidden={false} onClick={this.resolve} extra={this.state.extra} lights="lightOn "/>
       </div>
     )
   }
@@ -58,7 +58,7 @@ class LevelOne extends React.Component {
   resolve() {
     this.setState({
       solved  : true,
-      extra   : "deactivate"
+      extra   : "deactivate "
     });
   }
 

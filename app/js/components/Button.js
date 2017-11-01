@@ -29,7 +29,7 @@ const Boton = styled.section`
 
   transition: box-shadow 0.1s ease;
 
-  animation: falling 0.4s;
+  
   &.lightOn {
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
   }
@@ -64,6 +64,17 @@ const Boton = styled.section`
   &.lightOff {
     background-color: ${props => props.theme.grey};
     box-shadow: none;
+  }
+
+  &.fall {
+    animation: ${props => props.theme.fall} 0.4s;
+  }
+
+  &.deactivate {
+    opacity: 0.4;
+    transition: opacity 0.4s ease;
+    cursor: default;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.12);
   }
 `;
 
@@ -103,7 +114,7 @@ class Button extends React.Component {
     return (
         <Boton
           onClick={this.props.onClick}
-          className={"button wide " + this.props.color + this.props.lights} />
+          className={"button wide " + this.props.color + this.props.lights + this.props.transition} />
     )
   }
 

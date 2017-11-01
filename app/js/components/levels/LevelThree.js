@@ -15,7 +15,7 @@ class LevelThree extends React.Component {
     this.initiate = this.initiate.bind(this)
 
     this.state = {
-      initiated : false,
+      initiated : true,
       extra     : ""
     }
 
@@ -32,7 +32,7 @@ class LevelThree extends React.Component {
         <GameBoard height="height_1 m20">
           {this.toggler}
         </GameBoard>
-        <Button color="blue" onClick={this.initiate} extra={this.state.extra} transition="fall" delay={200} lights={true} />
+        <Button color="start" onClick={this.initiate} extra={this.state.extra} transition="fall" delay={200} lights={true} />
       </div>
     );
   }

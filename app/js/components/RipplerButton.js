@@ -17,7 +17,7 @@ class RipplerButton extends React.Component {
       ripple  : " ",
       x       : 0,
       y       : 0
-    }
+    };
   }
 
   render() {
@@ -28,10 +28,11 @@ class RipplerButton extends React.Component {
                   display={this.state.display}
                   ripple={this.state.ripple} />
         <Button color="exit "
+                transition={this.props.transition}
                 lights={this.props.lights}
                 onClick={this.handleClick} />
       </div>
-    )
+    );
   }
 
   handleClick(e) {
