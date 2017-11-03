@@ -4,12 +4,6 @@ import React         from 'react';
 import {Link}        from 'react-router';
 import DocumentTitle from 'react-document-title';
 
-import Button         from '../components/Button'
-import RipplerButton  from '../components/RipplerButton'
-import Rippler        from '../components/Rippler'
-import LevelFrame     from '../components/LevelFrame'
-import LevelStyle       from '../components/levels/LevelStyle'
-
 const propTypes = {
   currentUser: React.PropTypes.object
 };

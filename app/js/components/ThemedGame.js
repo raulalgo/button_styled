@@ -3,9 +3,7 @@
 import React          from 'react';
 import styled         from 'styled-components';
 
-import Button         from './Button';
-import RipplerButton  from './RipplerButton';
-import TogglerButton  from './TogglerButton';
+import Button         from './Buttons/Button';
 
 
 class ThemedGame extends React.Component {
@@ -17,9 +15,10 @@ class ThemedGame extends React.Component {
   render() {
     return(
       <div>
-        <Button color="white " lights="lightOn " />
-        <TogglerButton active={true} />
-        <TogglerButton active={false} />
+        <Button type="start" />
+        <Button type="exit" />
+        <Button type="grey" />
+        <Button lights="lOff" />
       </div>
     )
   }
@@ -30,3 +29,13 @@ class ThemedGame extends React.Component {
 }
 
 export default ThemedGame;
+
+
+/*
+
+
+        <Button color="white " lights="lightOn " />
+        <TogglerButton active={true} />
+        <TogglerButton active={false} />
+
+        */

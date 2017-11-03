@@ -7,6 +7,10 @@ import DocumentTitle from 'react-document-title';
 
 import styled         from 'styled-components';
 
+import Theme          from  '../components/Theme';
+import ThemedGame     from  '../components/ThemedGame';
+
+
 const propTypes = {
   currentUser: React.PropTypes.object
 };
@@ -23,7 +27,9 @@ class LevelPage extends React.Component {
     return (
       <DocumentTitle title="Level">
         <section className="level-page">
-          
+          <Theme>
+            <ThemedGame />
+          </Theme>
         </section>
       </DocumentTitle>
     );

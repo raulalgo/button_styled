@@ -22,30 +22,47 @@ const fall = keyframes`
 const Boton = styled.section`
   opacity: 1.00;
   border-radius: 4px;
-  margin: 12px auto;
+  margin: 12px;
 
   width: 400px;
   height: 120px;
 
   transition: box-shadow 0.1s ease;
-
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
   
-  &.lightOn {
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
-  }
-  &.lightOn:hover {
+  &:hover {
     transition: box-shadow 0.1s ease;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.24), 0px 0px 8px rgba(0, 0, 0, 0.12);
     cursor: pointer;
   }
-
-  &.lightOn:active {
+  
+  &:active {
     transition: box-shadow 0.1s ease;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
     cursor: pointer;
   }
 
+  ${props => {
+    if(props.type == 'start')
+      return('background-color:'+props.theme.start+';');
+    else if (props.type == 'exit')
+      return('background-color:'+props.theme.exit+';');
+    else {
+      return('background-color:'+props.theme.grey+';');}
+  }}
+
+  ${props => {
+    if(props.lights=='off') {
+      return(
+        "box-shadow: none"
+      );
+    }
+  }}
+`;
+/* 
   &.start {
+    `;
+    `;
     background-color: ${props => props.theme.start};
   }
 
@@ -75,8 +92,7 @@ const Boton = styled.section`
     transition: opacity 0.4s ease;
     cursor: default;
     box-shadow: 0px 0px 2px rgba(0,0,0,0.12);
-  }
-`;
+  } */
 
 class Button extends React.Component {
   transition;
@@ -85,6 +101,13 @@ class Button extends React.Component {
 
   constructor(props) {
     super(props);
+
+    console.log(props.type)
+
+    if(props.type == 'start')
+      console.log('hola');
+    else
+      console.log('guapo');
 
     /*this.transitionIn = this.transitionIn.bind(this)
 
@@ -113,9 +136,11 @@ class Button extends React.Component {
   render() {
     return (
         <Boton
+          type={this.props.type}
+          lights={this.props.lights}
           onClick={this.props.onClick}
-          className={"button wide " + this.props.color + this.props.lights + this.props.transition} />
-    )
+          className={this.props.lights + ' '} />
+    );
   }
 
   componentWillMount() {
@@ -137,11 +162,11 @@ class Button extends React.Component {
     if(nextProps.lights) {
       this.setState({
         shadow  : "light_on"
-      })
+      });
     } else {
       this.setState({
         shadow  : ""
-      })
+      });
     }
   }
 
@@ -149,7 +174,7 @@ class Button extends React.Component {
     this.setState({
       transition    : this.props.transition,
       show          : true
-    })
+    });
   }
 }
 
