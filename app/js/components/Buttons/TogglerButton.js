@@ -28,11 +28,23 @@ class TogglerButton extends React.Component {
 
   render() {
     return(
-      <Button
-        color={this.state.color}
-        onClick={this.state.toggler}
-        lights="lightOn " />
+      <Button 
+        lights={this.state.lights}
+        type={this.state.color}
+        deactivate={this.state.deactivate}
+        delay={this.state.delay}
+        onClick={this.props.onClick}
+        />
     )
+  }
+
+  componentWillMount(){
+    this.setState({
+      lights: true,
+      color: 'white',
+      deactivate: this.props.deactivate,
+      delay: this.props.delay
+    });
   }
 
   toggle() {

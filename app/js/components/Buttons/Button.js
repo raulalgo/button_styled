@@ -19,138 +19,138 @@ const fall = keyframes`
   }
 `;
 
+const fallInac = keyframes`
+  0%    {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+  50%  {
+    opacity: 0.3;
+    transform: scale(0.90);
+  }
+  100%  {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+`;
+
 const Boton = styled.section`
-  opacity: 1.00;
+  opacity: 0;
   border-radius: 4px;
   margin: 12px;
 
   width: 400px;
   height: 120px;
 
-  transition: box-shadow 0.1s ease;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
-  
-  &:hover {
-    transition: box-shadow 0.1s ease;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.24), 0px 0px 8px rgba(0, 0, 0, 0.12);
-    cursor: pointer;
-  }
-  
-  &:active {
-    transition: box-shadow 0.1s ease;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
-    cursor: pointer;
-  }
-
   ${props => {
-    if(props.type == 'start')
-      return('background-color:'+props.theme.start+';');
-    else if (props.type == 'exit')
-      return('background-color:'+props.theme.exit+';');
+
+    var css='';
+
+    if(props.color == 'start' && props.lights)
+      css+='background-color:'+props.theme.start+';';
+    else if (props.color == 'exit' && props.lights)
+      css+='background-color:'+props.theme.exit+';';
+    else if (props.color == 'white' && props.lights)
+      css+='background-color:' +props.theme.white + ';';
     else {
-      return('background-color:'+props.theme.grey+';');}
-  }}
-
-  ${props => {
-    if(props.lights=='off') {
-      return(
-        "box-shadow: none"
-      );
+      css+='background-color:'+props.theme.grey+';';};
+    
+    console.log('props.active: ' + props.active);
+    if(!props.active) {
+      css+=
+        'opacity: 0.4;' +
+        'transition: opacity 0.4s ease;' +
+        'cursor: default;' +
+        'box-shadow: 0px 0px 2px rgba(0,0,0,0.12);';
     }
+
+    else {
+      console.log('props.lights: '+props.lights)
+      if(props.lights) {
+        css+=
+          'box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);' +
+    
+          '&:hover { ' +
+            'transition: box-shadow 0.1s ease;' +
+            'box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.24), 0px 0px 8px rgba(0, 0, 0, 0.12);' +
+            'cursor: pointer;' +
+          '}' +
+          
+          '&:active {' +
+            'transition: box-shadow 0.1s ease;' +
+            'box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);' +
+            'cursor: pointer;'+
+          '}';
+      }
+    }
+    return(css);
   }}
+
+  &.active {
+    animation: ${fall} 0.4s forwards;
+    animation-delay: ${props => props.delay}s;
+  }
+
+  &.inactive {
+    animation: ${fallInac} 0.4s backwards;
+    animation-delay: ${props => props.delay}s;
+  }
 `;
-/* 
-  &.start {
-    `;
-    `;
-    background-color: ${props => props.theme.start};
-  }
-
-  &.exit {
-    background-color: ${props => props.theme.exit};
-  }
-
-  &.white {
-    background-color: ${props => props.theme.white};
-  }
-
-  &.grey {
-    background-color: ${props => props.theme.grey};
-  }
-
-  &.lightOff {
-    background-color: ${props => props.theme.grey};
-    box-shadow: none;
-  }
-
-  &.fall {
-    animation: ${props => props.theme.fall} 0.4s;
-  }
-
-  &.deactivate {
-    opacity: 0.4;
-    transition: opacity 0.4s ease;
-    cursor: default;
-    box-shadow: 0px 0px 2px rgba(0,0,0,0.12);
-  } */
 
 class Button extends React.Component {
   transition;
   lights;
   orientation;
+  classes;
 
   constructor(props) {
     super(props);
-
-    console.log(props.type)
-
-    if(props.type == 'start')
-      console.log('hola');
-    else
-      console.log('guapo');
-
-    /*this.transitionIn = this.transitionIn.bind(this)
-
-    if (this.props.orientation != "vertical" ) {
-      this.orientation = "horizontal"
-    } else {
-      this.orientation = this.props.orientation
-    }
-
-
-    if(this.props.lights) {
-      this.state = {
-          transition  : "display_none",
-          show        : false,
-          shadow      : "light_on"
-      }
-    } else {
-      this.state = {
-          transition  : "display_none",
-          show        : false
-      }
-    }*/
-    //this.transition = this.props.transition
   }
 
   render() {
     return (
         <Boton
-          type={this.props.type}
-          lights={this.props.lights}
+          lights={this.state.lights}
+          color={this.state.color}
+          active={this.state.active}
           onClick={this.props.onClick}
-          className={this.props.lights + ' '} />
+          delay={this.state.delay}
+          className={this.state.classes} />
     );
   }
 
   componentWillMount() {
-    if(this.props.hidden){
+    this.setState({
+      lights: true,
+      color: 'grey',
+      active: true,
+      transition: true,
+      delay: 0,
+      classes: 'active '
+    });
 
-    } else {
-      var that = this;
-      setTimeout(function(){
-        that.transitionIn();
-      },this.props.delay);
+    if(this.props.delay!=null){
+      this.setState({delay: this.props.delay});
+    }
+
+    if(this.props.type)
+      this.setState({
+        color: this.props.type
+      });
+
+    if(this.props.lightsOff){
+      this.setState({
+        lights: false
+      })
+    }
+
+    if(this.props.deactivate){
+      
+      this.setState({
+        active: false,
+        transition: false,
+        classes: 'inactive '
+      });
     }
   }
 
@@ -180,6 +180,3 @@ class Button extends React.Component {
 
 export default Button;
 
-/*
-<div className={"button wide " + this.orientation + " " + this.props.color + " " + this.state.transition + " " + this.props.extra + " " + this.state.shadow} onClick={this.props.onClick} ></div>
-*/

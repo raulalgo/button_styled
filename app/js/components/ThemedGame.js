@@ -4,6 +4,7 @@ import React          from 'react';
 import styled         from 'styled-components';
 
 import Button         from './Buttons/Button';
+import TogglerButton  from './Buttons/TogglerButton';
 
 
 class ThemedGame extends React.Component {
@@ -15,10 +16,8 @@ class ThemedGame extends React.Component {
   render() {
     return(
       <div>
-        <Button type="start" />
-        <Button type="exit" />
-        <Button type="grey" />
-        <Button lights="lOff" />
+        <Button type='start' delay={2} deactivate />
+        <TogglerButton deactivate/>
       </div>
     )
   }
