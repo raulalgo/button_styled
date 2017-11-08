@@ -46,11 +46,11 @@ const Boton = styled.section`
 
     var css='';
 
-    if(props.color == 'start' && props.lights)
+    if(props.color == 'start')
       css+='background-color:'+props.theme.start+';';
-    else if (props.color == 'exit' && props.lights)
+    else if (props.color == 'exit')
       css+='background-color:'+props.theme.exit+';';
-    else if (props.color == 'white' && props.lights)
+    else if (props.color == 'white')
       css+='background-color:' +props.theme.white + ';';
     else {
       css+='background-color:'+props.theme.grey+';';};
@@ -98,6 +98,22 @@ const Boton = styled.section`
 `;
 
 class Button extends React.Component {
+  /**
+   * Button: This is the basic element of the game
+   * 
+   * PROPERTIES
+   *  Type: externaly is chosen as type, but internaly translates into a color from the theme
+   *  Lights: Use 'lightOff' to remove the shadow
+   *  Active: Use 'deactivate' to reduce opacity while still showing the color
+   *  Delay: Time in seconds to present the component
+   * 
+   * DEFAULTS
+   *  Type: grey
+   *  Lights: on
+   *  Active: true
+   *  Delay: 0
+   * 
+   */
   transition;
   lights;
   orientation;
@@ -159,13 +175,9 @@ class Button extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.lights) {
+    if(nextProps.type!=this.props.type) {
       this.setState({
-        shadow  : "light_on"
-      });
-    } else {
-      this.setState({
-        shadow  : ""
+        color: nextProps.type
       });
     }
   }

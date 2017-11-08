@@ -16,8 +16,7 @@ class ThemedGame extends React.Component {
   render() {
     return(
       <div>
-        <Button type='start' delay={2} deactivate />
-        <TogglerButton deactivate/>
+        <TogglerButton on type='exit'/>
       </div>
     )
   }
