@@ -3,8 +3,10 @@
 import React          from 'react';
 import styled         from 'styled-components';
 
-import Button         from './Buttons/Button';
+// import Button         from './Buttons/Button';
+import Button         from './Buttons/Button_defaults';
 import TogglerButton  from './Buttons/TogglerButton';
+import RipplerButton  from './Buttons/RipplerButton';
 
 
 class ThemedGame extends React.Component {
@@ -16,7 +18,7 @@ class ThemedGame extends React.Component {
   render() {
     return(
       <div>
-        <TogglerButton on />
+        <Button color='start'  />
       </div>
     )
   }
