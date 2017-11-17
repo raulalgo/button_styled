@@ -11,30 +11,15 @@ class TogglerButton extends React.Component {
   constructor(props) {
     super(props)
     this.toggle = this.toggle.bind(this);
-
-    // if(this.props.active) {
-    //   this.state = {
-    //     active    : true,
-    //     color     : "white ",
-    //     toggler   : this.toggle
-    //   }
-    // }
-    // else {
-    //   this.state = {
-    //     active    : false,
-    //     color     : "grey ",
-    //     toggler   : this.toggle
-    //   }
-    // }
   }
 
   render() {
     return(
       <Button 
-        lights={this.state.lights}
-        type={this.state.color}
-        deactivate={this.state.deactivate}
-        delay={this.state.delay}
+        lightsOff={this.props.lightsOff}
+        color={this.state.color}
+        deactivate={this.props.deactivate}
+        delay={this.props.delay}
         onClick={this.toggle}
         />
     )
@@ -42,11 +27,7 @@ class TogglerButton extends React.Component {
 
   componentWillMount(){
     this.setState({
-      lights: true,
-      color: 'grey',
-      deactivate: this.props.deactivate,
-      delay: this.props.delay,
-      switch: false
+      color: 'grey'
     });
 
     if(this.props.on) {
@@ -85,18 +66,16 @@ class TogglerButton extends React.Component {
   }
 }
 
+TogglerButton.defaultProps = {
+  lights: true,
+  ligtsOff: false,
+  color: 'grey',
+  deactivate: false,
+  transition: true,
+  delay: 0,
+  switch: true,
+  on: true,
+  switch: true
+}
+
 export default TogglerButton;
-
-
-// if(this.state.active) {
-//   this.setState({
-//     active    : false,
-//     color     : "grey "
-//   });
-// }
-// else {
-//   this.setState({
-//     active    : true,
-//     color     : "white "
-//   })
-// }
