@@ -4,7 +4,7 @@ import React          from 'react';
 import styled         from 'styled-components';
 
 // import Button         from './Buttons/Button';
-import Button         from './Buttons/Button_defaults';
+import Button         from './Buttons/Button';
 import TogglerButton  from './Buttons/TogglerButton';
 import RipplerButton  from './Buttons/RipplerButton';
 
@@ -18,7 +18,8 @@ class ThemedGame extends React.Component {
   render() {
     return(
       <div>
-        <Button color='start'  />
+        <Button deactivate color="exit"  />
+        <Button color="start" />
       </div>
     )
   }

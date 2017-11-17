@@ -55,7 +55,6 @@ const Boton = styled.section`
     else {
       css+='background-color:'+props.theme.grey+';';};
     
-    console.log('props.active: ' + props.active);
     if(!props.active) {
       css+=
         'opacity: 0.4;' +
@@ -65,7 +64,6 @@ const Boton = styled.section`
     }
 
     else {
-      console.log('props.lights: '+props.lights)
       if(props.lights) {
         css+=
           'box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);' +
@@ -87,13 +85,23 @@ const Boton = styled.section`
   }}
 
   &.active {
-    animation: ${fall} 0.4s forwards;
+    opacity: 1;
+    animation: ${fall} 0.4s;
     animation-delay: ${props => props.delay}s;
+
+    &.activationSwitch {
+      opacity: 0.4;
+    }
   }
 
   &.inactive {
-    animation: ${fallInac} 0.4s backwards;
+    opacity: 0.4;
+    animation: ${fallInac} 0.4s;
     animation-delay: ${props => props.delay}s;
+
+    &.activationSwitch {
+      opacity: 1;
+    }
   }
 `;
 
@@ -118,76 +126,75 @@ class Button extends React.Component {
   lights;
   orientation;
   classes;
+  activationSwitch;
 
   constructor(props) {
     super(props);
+
+    this.initActivationClass = this.initActivationClass.bind(this);
+    this.switchActivationClass = this.switchActivationClass.bind(this);
+
+    this.activationSwitch = ''
   }
 
   render() {
     return (
         <Boton
-          lights={this.state.lights}
-          color={this.state.color}
-          active={this.state.active}
+          lights={!this.props.lightOff}
+          color={this.props.color}
+          active={!this.props.deactivate}
           onClick={this.props.onClick}
-          delay={this.state.delay}
-          className={this.state.classes} />
+          delay={this.props.delay}
+          className={this.state.classes + this.activationSwitch} />
     );
   }
 
   componentWillMount() {
-    this.setState({
-      lights: true,
-      color: 'grey',
-      active: true,
-      transition: true,
-      delay: 0,
-      classes: 'active '
-    });
-
-    if(this.props.delay!=null){
-      this.setState({delay: this.props.delay});
-    }
-
-    if(this.props.type)
-      this.setState({
-        color: this.props.type
-      });
-
-    if(this.props.lightsOff){
-      this.setState({
-        lights: false
-      })
-    }
-
-    if(this.props.deactivate){
-      
-      this.setState({
-        active: false,
-        transition: false,
-        classes: 'inactive '
-      });
-    }
+    this.initActivationClass(this.props.deactivate);
   }
 
-  componentWillUpdate() {
-
+  componentWillUpdate(nextProps) {
+    console.log('props received')
+    if(nextProps.deactivate!=this.props.deactivate) {
+      this.switchActivationClass(this.activationSwitch);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.type!=this.props.type) {
+
+  }
+
+  initActivationClass(deactivateFlag) {
+    if(deactivateFlag) {
       this.setState({
-        color: nextProps.type
+        classes: "inactive "
       });
+    } else {
+      this.setState({
+        classes: "active "
+      })
     }
   }
 
-  transitionIn() {
-    this.setState({
-      transition    : this.props.transition,
-      show          : true
-    });
+  switchActivationClass(switcher) {
+    console.log('switchin')
+    if(switcher == '') {
+      this.activationSwitch = 'activationSwitch ';
+    }
+    else {
+      this.activationSwitch = '';
+    }
   }
+}
+
+Button.defaultProps = {
+  lights: true,
+  lightOff: false,
+  color: 'grey',
+  deactivate: false,
+  transition: true,
+  delay: 0,
+  classes: 'active '
 }
 
 export default Button;
