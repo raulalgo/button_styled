@@ -1,0 +1,58 @@
+@import url(/Users/raulalgo/Documents/10 trabajos/2017 02 23 ux game/styled/app/styles/_transitions.css);
+p {
+  margin-bottom: 1em;
+}
+
+.heading {
+  margin-bottom: 0.618em;
+}
+
+.heading.-large, h1 {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.heading.-medium, h2 {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+.heading.-small, h3 {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 13.33333px;
+}
+
+.heading.-smallest {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  color: #333;
+  background-color: #AABCCC;
+  padding: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.center .centered {
+  display: inline-block;
+}
+
+.center .centered .vertical_object {
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.center .centered .vertical_object .vertical_object {
+  margin: 0;
+}
+ 
+
+ /*# sourceMappingURL= main.css.map */
