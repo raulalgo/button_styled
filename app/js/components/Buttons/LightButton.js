@@ -1,11 +1,11 @@
-'use strict'
+'use strict';
 
 import React            from  'react';
 import Button           from  './Button';
 
 class LightButton extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.switchOn = this.switchOn.bind(this);
     this.switchOff = this.switchOff.bind(this);
@@ -14,12 +14,12 @@ class LightButton extends React.Component {
       this.state = {
         color   : this.props.color,
         onClick : this.props.onClick
-      }
+      };
     } else {
       this.state = {
         color   : "grey",
         onClick : null
-      }
+      };
     }
   }
 
@@ -34,14 +34,14 @@ class LightButton extends React.Component {
         delay={this.props.delay}
         lights={this.props.lights}
         orientation={this.props.orientation} />
-    )
+    );
   }
 
   componentWillReceiveProps(nextProps) {
     if(!nextProps.lights) {
-      this.switchOff()
+      this.switchOff();
     } else {
-      this.switchOn()
+      this.switchOn();
     }
   }
 
@@ -49,15 +49,15 @@ class LightButton extends React.Component {
     this.setState( {
       color   : this.props.color,
       onClick : this.props.onClick
-    })
+    });
   }
 
   switchOff() {
     this.setState({
       color   : "grey",
       onClick : null
-    })
+    });
   }
 }
 
-export default LightButton
+export default LightButton;

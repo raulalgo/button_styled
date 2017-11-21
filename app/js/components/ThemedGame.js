@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import React          from 'react';
 import styled         from 'styled-components';
@@ -18,9 +18,12 @@ class ThemedGame extends React.Component {
   render() {
     return(
       <div>
-        <TogglerButton type='exit' />
+        <Button color="start"  />
+        <TogglerButton on />
+        <TogglerButton type="exit" />
+        <RipplerButton  />
       </div>
-    )
+    );
   }
 
   dameClick() {

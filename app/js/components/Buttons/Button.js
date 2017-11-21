@@ -110,7 +110,7 @@ class Button extends React.Component {
    * Button: This is the basic element of the game
    * 
    * PROPERTIES
-   *  Type: externaly is chosen as type, but internaly translates into a color from the theme
+   *  Color: color from the theme
    *  Lights: Use 'lightOff' to remove the shadow
    *  Active: Use 'deactivate' to reduce opacity while still showing the color
    *  Delay: Time in seconds to present the component
@@ -134,7 +134,7 @@ class Button extends React.Component {
     this.initActivationClass = this.initActivationClass.bind(this);
     this.switchActivationClass = this.switchActivationClass.bind(this);
 
-    this.activationSwitch = ''
+    this.activationSwitch = '';
   }
 
   render() {
@@ -151,17 +151,18 @@ class Button extends React.Component {
 
   componentWillMount() {
     this.initActivationClass(this.props.deactivate);
+
   }
 
   componentWillUpdate(nextProps) {
-    console.log('props received')
+    console.log('props received');
     if(nextProps.deactivate!=this.props.deactivate) {
       this.switchActivationClass(this.activationSwitch);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-
+    /** If tempted of using state to set up color after a change in lights it will break the togglers */
   }
 
   initActivationClass(deactivateFlag) {
@@ -172,12 +173,12 @@ class Button extends React.Component {
     } else {
       this.setState({
         classes: "active "
-      })
+      });
     }
   }
 
   switchActivationClass(switcher) {
-    console.log('switchin')
+    console.log('switchin');
     if(switcher == '') {
       this.activationSwitch = 'activationSwitch ';
     }
@@ -195,7 +196,7 @@ Button.defaultProps = {
   transition: true,
   delay: 0,
   classes: 'active '
-}
+};
 
 export default Button;
 
