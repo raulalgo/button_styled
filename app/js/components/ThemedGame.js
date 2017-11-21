@@ -4,9 +4,11 @@ import React          from 'react';
 import styled         from 'styled-components';
 
 // import Button         from './Buttons/Button';
-import Button         from './Buttons/Button';
-import TogglerButton  from './Buttons/TogglerButton';
-import RipplerButton  from './Buttons/RipplerButton';
+// import Button         from './Buttons/Button';
+// import TogglerButton  from './Buttons/TogglerButton';
+// import RipplerButton  from './Buttons/RipplerButton';
+
+import LevelOne       from './levels/LevelOne';
 
 
 class ThemedGame extends React.Component {
@@ -17,9 +19,7 @@ class ThemedGame extends React.Component {
 
   render() {
     return(
-      <div>
-        <TogglerButton  />
-      </div>
+      <LevelOne />
     );
   }
 

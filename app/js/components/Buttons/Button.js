@@ -39,7 +39,7 @@ const Boton = styled.section`
   border-radius: 4px;
   margin: 12px;
 
-  width: 400px;
+  /* width: 400px; */
   height: 120px;
 
   ${props => {
