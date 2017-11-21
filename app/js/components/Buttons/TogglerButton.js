@@ -6,6 +6,22 @@ import styled         from  'styled-components';
 import Button         from  './Button';
 import Rippler        from  './Rippler';
 
+/**
+ * 
+ * TogglerButton
+ * ----------------------------------
+ * 
+ * This is a button that Toggles between one or two states.
+ * 
+ * DEFAULT: Alternates Grey - White
+ * 
+ * Flags --------
+ * on: Switches to alternating White - Grey
+ * exit: Switches to alternating Grey - White - Exit (Rippling after the orange)
+ * on exit: same as exit but starting in White
+ * ripple: goes straight to orange rippling after it
+ */
+
 class TogglerButton extends React.Component {
   exitFlag;
 
@@ -47,20 +63,30 @@ class TogglerButton extends React.Component {
         switch: true
       });
     }
-
+    
     this.setState({
       display: 'display_none ',
       ripple: ' ',
       x: 0,
       y: 0
     });
-    this.exitFlag = false;
+
+    if(this.props.ripple) {
+      this.setState({
+        color: 'exit',
+        switch: true
+      });
+      this.exitFlag = true;
+    }
+    else {
+      this.exitFlag = false;
+    }
   }
 
   toggle(e) {
     if(!this.exitFlag){
       if(this.state.switch){
-        if(this.props.type!='exit'||this.exitFlag){
+        if((!this.props.exit)||this.exitFlag){
           this.setState({
             color: 'grey',
             switch: false
@@ -104,7 +130,9 @@ TogglerButton.defaultProps = {
   deactivate: false,
   transition: true,
   delay: 0,
-  on: false
+  on: false,
+  ripple: false,
+  exit: false
 };
 
 export default TogglerButton;
