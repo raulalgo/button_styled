@@ -28,13 +28,13 @@ class ThemedGame extends React.Component {
   render() {
     return(
       <Frame>
-        <LevelOne />
+        {this.props.children}
       </Frame>
     );
   }
 
   dameClick() {
-    console.log("dame Click");
+    console.log('dame Click');
   }
 }
 

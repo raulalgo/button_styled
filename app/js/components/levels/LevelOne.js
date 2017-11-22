@@ -7,7 +7,7 @@ import styled         from 'styled-components';
 
 import SingleColumn   from  '../layouts/SingleColumn';
 
-import ToggllerButton from  '../Buttons/TogglerButton';
+import TogglerButton from  '../Buttons/TogglerButton';
 
 class LevelOne extends React.Component {
 
@@ -17,7 +17,7 @@ class LevelOne extends React.Component {
   render() {
     return (
         <SingleColumn>
-          <ToggllerButton />
+          <TogglerButton ripple onClick={this.props.newLevel} />
         </SingleColumn>
     );
   }

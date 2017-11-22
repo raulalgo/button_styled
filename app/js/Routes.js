@@ -18,6 +18,7 @@ export default (
       <IndexRoute component={LevelPage} />
 
       <Route path="/" component={LevelPage} />
+      
       <Route path="/search" component={SearchPage} />
 
       <Route path="/level" component={LevelPage} />

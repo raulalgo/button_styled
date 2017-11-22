@@ -9,6 +9,9 @@ import styled         from 'styled-components';
 
 import Theme          from  '../components/Theme';
 import ThemedGame     from  '../components/ThemedGame';
+import LevelFrame     from  '../components/LevelFrame';
+
+import LevelOne       from  '../components/levels/LevelOne';
 
 
 const propTypes = {
@@ -20,6 +23,8 @@ class LevelPage extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.pushLevel = this.pushLevel.bind(this);
   }
 
   render() {
@@ -28,7 +33,11 @@ class LevelPage extends React.Component {
       <DocumentTitle title="Level">
         <section className="level-page">
           <Theme>
-            <ThemedGame />
+            <ThemedGame> 
+              <LevelFrame currentLevel={this.props.currentLevel} pushLevel={this.pushLevel} >
+                <LevelOne />
+              </LevelFrame>
+            </ThemedGame>
           </Theme>
         </section>
       </DocumentTitle>
@@ -46,6 +55,8 @@ class LevelPage extends React.Component {
   }
 
   pushLevel() {
+    console.log('even higher');
+    this.props.pushLevel();
   }
 
   newLevel() {

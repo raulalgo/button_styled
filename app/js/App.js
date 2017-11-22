@@ -27,7 +27,7 @@ class App extends React.Component {
     this.pushLevel = this.pushLevel.bind(this);
 
 
-    this.maxLevels = 7
+    this.maxLevels = 7;
     this.state = {
       currentUser: {},
       currentLevel :  0
@@ -82,7 +82,7 @@ class App extends React.Component {
   pushLevel() {
     console.log("pushing the level from app");
 
-    var tmp = this.state.currentLevel
+    var tmp = this.state.currentLevel;
     tmp++;
     if(tmp==this.maxLevels)
     {
@@ -92,7 +92,7 @@ class App extends React.Component {
       currentLevel  : tmp
     }, function() {
       console.log("After pushing, the level is: " + this.state.currentLevel);
-    })
+    });
 
   }
 }
