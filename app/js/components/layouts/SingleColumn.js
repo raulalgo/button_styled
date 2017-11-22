@@ -13,8 +13,14 @@ const Layout = styled.section`
 `;
 
 const Column = styled.section`
+    display: grid;
+    grid-auto-rows: 90px;
+    grid-row-gap: 10px;
+
     @media (min-width: 500px){
         grid-area: column;
+        grid-auto-rows: 120px;
+        grid-row-gap: 20px;
     }
 `;
 

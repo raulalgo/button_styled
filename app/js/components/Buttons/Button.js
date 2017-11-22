@@ -35,12 +35,15 @@ const fallInac = keyframes`
 `;
 
 const Boton = styled.section`
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
   opacity: 0;
   border-radius: 4px;
-  margin: 12px;
+  /* margin: 12px; */
+
+  height: 100%;
 
   /* width: 400px; */
-  height: 120px;
 
   ${props => {
 
@@ -86,7 +89,7 @@ const Boton = styled.section`
 
   &.active {
     opacity: 1;
-    animation: ${fall} 0.4s;
+    animation: ${fall} 0.4s ;
     animation-delay: ${props => props.delay}s;
 
     &.activationSwitch {
@@ -113,7 +116,8 @@ class Button extends React.Component {
    *  Color: color from the theme
    *  Lights: Use 'lightOff' to remove the shadow
    *  Active: Use 'deactivate' to reduce opacity while still showing the color
-   *  Delay: Time in seconds to present the component
+   *  Delay: Time in seconds to present the component. Used also to postpone entry.
+   *         Set Delay to 'wait' to hold the enry and change it to 'go' when needed
    * 
    * DEFAULTS
    *  Type: grey
@@ -162,18 +166,33 @@ class Button extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    /** If tempted of using state to set up color after a change in lights it will break the togglers */
+    if(this.props.delay=='wait') {
+      if(nextProps.delay != this.props.delay) {
+        if(nextProps.delay == 'go') {
+          this.setState({
+            classes: 'active '
+          });
+        }
+      }
+    }
   }
 
   initActivationClass(deactivateFlag) {
     if(deactivateFlag) {
       this.setState({
-        classes: "inactive "
+        classes: 'inactive '
       });
     } else {
-      this.setState({
-        classes: "active "
-      });
+      if(this.props.delay!='wait'){
+        this.setState({
+          classes: 'active '
+        });
+      }
+      else {
+        this.setState({
+          classes: ' '
+        });
+      }
     }
   }
 
@@ -195,7 +214,6 @@ Button.defaultProps = {
   deactivate: false,
   transition: true,
   delay: 0,
-  classes: 'active '
 };
 
 export default Button;
