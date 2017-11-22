@@ -11,6 +11,14 @@ import styled         from 'styled-components';
 import LevelOne       from './levels/LevelOne';
 
 
+const Frame = styled.section`
+  
+  @media (min-width: 500px) {
+    margin: 20px;
+  }
+
+`;
+
 class ThemedGame extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +27,9 @@ class ThemedGame extends React.Component {
 
   render() {
     return(
-      <LevelOne />
+      <Frame>
+        <LevelOne />
+      </Frame>
     );
   }
 
