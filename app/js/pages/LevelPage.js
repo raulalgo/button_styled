@@ -61,7 +61,6 @@ class LevelPage extends React.Component {
   }
 
   pushLevel() {
-    console.log('even higher');
     this.props.pushLevel();
   }
 

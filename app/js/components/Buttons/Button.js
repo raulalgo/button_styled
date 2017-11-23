@@ -159,7 +159,6 @@ class Button extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.log('props received');
     if(nextProps.deactivate!=this.props.deactivate) {
       this.switchActivationClass(this.activationSwitch);
     }
@@ -197,7 +196,6 @@ class Button extends React.Component {
   }
 
   switchActivationClass(switcher) {
-    console.log('switchin');
     if(switcher == '') {
       this.activationSwitch = 'activationSwitch ';
     }

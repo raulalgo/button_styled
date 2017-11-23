@@ -50,7 +50,6 @@ class RipplerButton extends React.Component {
   }
 
   handleClick(e) {
-    console.log(e.nativeEvent);
     this.setState({
       display : " ",
       ripple  : "ripple ",

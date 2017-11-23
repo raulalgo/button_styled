@@ -40,7 +40,6 @@ class Rippler extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     this.style = ({ top   : this.props.y-50,
                     left  : this.props.x-50})
 

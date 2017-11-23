@@ -34,7 +34,6 @@ class ThemedGame extends React.Component {
   }
 
   dameClick() {
-    console.log('dame Click');
   }
 }
 
