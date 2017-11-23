@@ -41,7 +41,7 @@ class TogglerButton extends React.Component {
           ripple={this.state.ripple}
         />
         <Button 
-          lightOff={this.props.lightsOff}
+          lightOff={this.props.lightOff}
           color={this.state.color}
           deactivate={this.props.deactivate}
           delay={this.props.delay}
@@ -125,7 +125,7 @@ class TogglerButton extends React.Component {
 }
 
 TogglerButton.defaultProps = {
-  ligtsOff: false,
+  ligtOff: false,
   color: 'grey',
   deactivate: false,
   transition: true,

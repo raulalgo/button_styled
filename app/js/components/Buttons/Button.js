@@ -89,7 +89,7 @@ const Boton = styled.section`
 
   &.active {
     opacity: 1;
-    animation: ${fall} 0.4s ;
+    animation: ${fall} 0.4s backwards;
     animation-delay: ${props => props.delay}s;
 
     &.activationSwitch {
@@ -99,7 +99,7 @@ const Boton = styled.section`
 
   &.inactive {
     opacity: 0.4;
-    animation: ${fallInac} 0.4s;
+    animation: ${fallInac} 0.4s backwards;
     animation-delay: ${props => props.delay}s;
 
     &.activationSwitch {
@@ -145,9 +145,9 @@ class Button extends React.Component {
     return (
         <Boton
           lights={!this.props.lightOff}
-          color={this.props.color}
+          color={this.props.lightOff ? 'grey' : this.props.color}
           active={!this.props.deactivate}
-          onClick={this.props.onClick}
+          onClick={this.props.lightOff ? null : this.props.onClick}
           delay={this.props.delay}
           className={this.state.classes + this.activationSwitch} />
     );

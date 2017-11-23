@@ -19,7 +19,8 @@ class LevelTwo extends React.Component {
         this.resolve = this.resolve.bind(this);
 
         this.state = {
-            delay: 'wait'
+            delay: 'wait',
+            deactivate: false
         };
         this.solveFlag = false;
     }
@@ -28,7 +29,7 @@ class LevelTwo extends React.Component {
         return (
             <SingleColumn>
                 <TogglerButton ripple onClick={this.props.newLevel} delay={this.state.delay} />
-                <Button color='start' onClick={this.resolve} />
+                <Button color='start' onClick={this.resolve} deactivate={this.state.deactivate} />
             </SingleColumn>
         );
     }
@@ -36,7 +37,8 @@ class LevelTwo extends React.Component {
     resolve () {
         if(!this.solveFlag){
             this.setState({
-                delay: 'go'
+                delay: 'go',
+                deactivate: true
             });
         }
     }
