@@ -33,7 +33,7 @@ class TogglerButton extends React.Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.ripple = this.ripple.bind(this);
-    this.switchState = this.switchState.bind(this);
+    this.setIndexes = this.setIndexes.bind(this);
 
     this.stateList = {
       0 : {
@@ -75,17 +75,8 @@ class TogglerButton extends React.Component {
   }
 
   componentWillMount(){
-    this.setState({
-      color: 'grey',
-      switch: false
-    });
-
-    if(this.props.on) {
-      this.setState({
-        color: 'white',
-        switch: true
-      });
-    }
+    this.setIndexes(this.props);
+    this.setState(this.stateList[this.currentIndex]);
     
     this.setState({
       display: 'display_none ',
@@ -93,51 +84,25 @@ class TogglerButton extends React.Component {
       x: 0,
       y: 0
     });
+  }
 
-    if(this.props.ripple) {
-      this.setState({
-        color: 'exit',
-        switch: true
-      });
-      this.exitFlag = true;
-    }
-    else {
-      this.exitFlag = false;
-    }
+  componentWillReceiveProps(nextProps) {
+    this.setIndexes(nextProps);
   }
 
   toggle(e) {
-    if(this.currentIndex < this.maxIndex) {
-
+    if(this.currentIndex == 2) {
+      this.ripple(e);
     }
-
-    // if(!this.exitFlag){
-    //   if(this.state.switch){
-    //     if((!this.props.exit)||this.exitFlag){
-    //       this.setState({
-    //         color: 'grey',
-    //         switch: false
-    //       });
-    //     } else {
-    //       this.setState({
-    //         color: 'exit',
-    //         switch: true
-    //       });
-    //       this.exitFlag = true;
-    //     }
-    //   }
-    //   else {
-    //     this.setState({
-    //       color: 'white',
-    //       deactivate: true,
-    //       switch: true
-    //     });
-    //     this.exitFlag = false;
-    //   }
-    // }
-    // else {
-    //   this.ripple(e);
-    // }
+    else {
+      if(this.currentIndex < this.maxIndex) {
+        this.currentIndex++;
+      }
+      else {
+        this.currentIndex = this.minIndex;
+      }
+    }  
+    this.setState(this.stateList[this.currentIndex]);
   }
 
   ripple(e){
@@ -149,11 +114,19 @@ class TogglerButton extends React.Component {
     });
     this.props.onClick();
   }
+  setIndexes(examProps){
+    if (examProps.on) {
+      this.currentIndex = 1;
+    }
 
-  switchState(currentState) {
-    newState = {};
-
-    return nextState;
+    console.log(examProps.exit);
+    if (examProps.exit) {
+      this.maxIndex = 2;
+    }
+    if (examProps.ripple) {
+      this.currentIndex = 2;
+      this.maxIndex = 2;
+    }
   }
 }
 

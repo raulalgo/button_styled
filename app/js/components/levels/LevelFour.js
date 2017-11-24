@@ -15,6 +15,8 @@ class LevelFour extends React.Component {
     firstFlag;
     rippleArray;
 
+    exitTest
+
     constructor(props) {
         super(props);
 
@@ -24,7 +26,7 @@ class LevelFour extends React.Component {
 
         this.rippleArray = [];
 
-        this.state ={
+        this.state = {
             light : {
                 0   :   false,
                 1   :   false,
@@ -36,17 +38,19 @@ class LevelFour extends React.Component {
                 1   :   false,
                 2   :   false,
                 3   :   false
-            }
+            },
+            exitTest : false
         }
 
         this.pointer = 0;
         this.firstFlag = true;
+        
     }
 
     render(){
         return (
             <SingleColumn>
-                <TogglerButton on ripple={false} lightOff={true} delay={0} />
+                <TogglerButton exit={this.state.exitTest} />
                 <Button
                     color="start"
                     delay={0.2}
@@ -61,6 +65,9 @@ class LevelFour extends React.Component {
     }
     
     clicker () {
+        this.setState({
+            exitTest : true
+        });
         if(this.firstFlag) {
             this.setState({
                 light : {
