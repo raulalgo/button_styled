@@ -15,6 +15,7 @@ import LevelOne       from  '../components/levels/LevelOne';
 import LevelTwo       from  '../components/levels/LevelTwo';
 import LevelThree     from  '../components/levels/LevelThree';
 import LevelFour      from  '../components/levels/LevelFour';
+import LevelFive      from  '../components/levels/LevelFive';
 
 
 const propTypes = {
@@ -42,6 +43,7 @@ class LevelPage extends React.Component {
                 <LevelTwo />
                 <LevelThree />
                 <LevelFour />
+                <LevelFive />
               </LevelFrame>
             </ThemedGame>
           </Theme>

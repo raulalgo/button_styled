@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import React            from    'react';
 import styled           from    'styled-components';
@@ -38,8 +38,7 @@ class LevelFour extends React.Component {
                 1   :   false,
                 2   :   false,
                 3   :   false
-            },
-            rippleTest : false
+            }
         }
 
         this.pointer = 0;
@@ -72,9 +71,6 @@ class LevelFour extends React.Component {
     }
     
     clicker () {
-        this.setState({
-            rippleTest : true
-        });
         if(this.firstFlag) {
             this.setState({
                 light : {
