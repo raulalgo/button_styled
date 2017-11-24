@@ -46,11 +46,7 @@ class LevelFour extends React.Component {
     render(){
         return (
             <SingleColumn>
-                <TogglerButton on ripple lightOff={false} />
-                <TogglerButton on ripple={this.state.ripple[0]} lightOff={!this.state.light[0]} delay={0} />
-                <TogglerButton on ripple={this.state.ripple[1]} lightOff={!this.state.light[1]} delay={0.05} />
-                <TogglerButton on ripple={this.state.ripple[2]} lightOff={!this.state.light[2]} delay={0.1} />
-                <TogglerButton on ripple={this.state.ripple[3]} lightOff={!this.state.light[3]} delay={0.15} />
+                <TogglerButton on ripple={false} lightOff={true} delay={0} />
                 <Button
                     color="start"
                     delay={0.2}
@@ -121,3 +117,8 @@ class LevelFour extends React.Component {
     }
 }
 export default LevelFour;
+
+{/* <TogglerButton on ripple={this.state.ripple[0]} lightOff={!this.state.light[0]} delay={0} />
+<TogglerButton on ripple={this.state.ripple[1]} lightOff={!this.state.light[1]} delay={0.05} />
+<TogglerButton on ripple={this.state.ripple[2]} lightOff={!this.state.light[2]} delay={0.1} />
+<TogglerButton on ripple={this.state.ripple[3]} lightOff={!this.state.light[3]} delay={0.15} /> */}

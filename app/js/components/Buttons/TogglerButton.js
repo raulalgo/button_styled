@@ -24,11 +24,34 @@ import Rippler        from  './Rippler';
 
 class TogglerButton extends React.Component {
   exitFlag;
+  stateList;
+  minIndex;
+  maxIndex;
+  currentIndex;
 
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.ripple = this.ripple.bind(this);
+    this.switchState = this.switchState.bind(this);
+
+    this.stateList = {
+      0 : {
+        color : 'grey',
+        switch: false
+      } ,
+      1 : {
+        color : 'white',
+        switch: true
+      } ,
+      2 : {
+        color : 'exit',
+        switch: true
+      } 
+    };
+    this.minIndex = 0;
+    this.maxIndex = 1;
+    this.currentIndex = 0;
   }
 
   render() {
@@ -84,33 +107,37 @@ class TogglerButton extends React.Component {
   }
 
   toggle(e) {
-    if(!this.exitFlag){
-      if(this.state.switch){
-        if((!this.props.exit)||this.exitFlag){
-          this.setState({
-            color: 'grey',
-            switch: false
-          });
-        } else {
-          this.setState({
-            color: 'exit',
-            switch: true
-          });
-          this.exitFlag = true;
-        }
-      }
-      else {
-        this.setState({
-          color: 'white',
-          deactivate: true,
-          switch: true
-        });
-        this.exitFlag = false;
-      }
+    if(this.currentIndex < this.maxIndex) {
+
     }
-    else {
-      this.ripple(e);
-    }
+
+    // if(!this.exitFlag){
+    //   if(this.state.switch){
+    //     if((!this.props.exit)||this.exitFlag){
+    //       this.setState({
+    //         color: 'grey',
+    //         switch: false
+    //       });
+    //     } else {
+    //       this.setState({
+    //         color: 'exit',
+    //         switch: true
+    //       });
+    //       this.exitFlag = true;
+    //     }
+    //   }
+    //   else {
+    //     this.setState({
+    //       color: 'white',
+    //       deactivate: true,
+    //       switch: true
+    //     });
+    //     this.exitFlag = false;
+    //   }
+    // }
+    // else {
+    //   this.ripple(e);
+    // }
   }
 
   ripple(e){
@@ -121,6 +148,12 @@ class TogglerButton extends React.Component {
       y: e.nativeEvent.clientY
     });
     this.props.onClick();
+  }
+
+  switchState(currentState) {
+    newState = {};
+
+    return nextState;
   }
 }
 
