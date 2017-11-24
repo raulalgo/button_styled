@@ -88,6 +88,7 @@ class TogglerButton extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setIndexes(nextProps);
+    this.setState(this.stateList[this.currentIndex]);
   }
 
   toggle(e) {

@@ -13,9 +13,9 @@ import TogglerButton    from    '../Buttons/TogglerButton';
 class LevelFour extends React.Component {
     pointer;
     firstFlag;
-    exitArray;
+    rippleArray;
 
-    exitTest
+    rippleTest
 
     constructor(props) {
         super(props);
@@ -24,7 +24,7 @@ class LevelFour extends React.Component {
         this.clicker = this.clicker.bind(this);
         this.winner = this.winner.bind(this);
 
-        this.exitArray = [];
+        this.rippleArray = [];
 
         this.state = {
             light : {
@@ -33,13 +33,13 @@ class LevelFour extends React.Component {
                 2   :   false,
                 3   :   false
             },
-            exit : {
+            ripple : {
                 0   :   false,
                 1   :   false,
                 2   :   false,
                 3   :   false
             },
-            exitTest : false
+            rippleTest : false
         }
 
         this.pointer = 0;
@@ -50,11 +50,14 @@ class LevelFour extends React.Component {
     render(){
         return (
             <SingleColumn>
-                <TogglerButton on exit={this.state.exit[0]} lightOff={!this.state.light[0]} delay={0} />
-                <TogglerButton on exit={this.state.exit[1]} lightOff={!this.state.light[1]} delay={0.05} />
-                <TogglerButton on exit={this.state.exit[2]} lightOff={!this.state.light[2]} delay={0.1} />
-                <TogglerButton on exit={this.state.exit[3]} lightOff={!this.state.light[3]} delay={0.15} />
-
+                <TogglerButton on ripple={this.state.ripple[0]} lightOff={!this.state.light[0]} delay={0} 
+                                 onClick={this.state.ripple[0] ? this.props.newLevel : null }/>
+                <TogglerButton on ripple={this.state.ripple[1]} lightOff={!this.state.light[1]} delay={0.05} 
+                                 onClick={this.state.ripple[1] ? this.props.newLevel : null }/>
+                <TogglerButton on ripple={this.state.ripple[2]} lightOff={!this.state.light[2]} delay={0.1} 
+                                 onClick={this.state.ripple[2] ? this.props.newLevel : null }/>
+                <TogglerButton on ripple={this.state.ripple[3]} lightOff={!this.state.light[3]} delay={0.15} 
+                                 onClick={this.state.ripple[3] ? this.props.newLevel : null }/>
                 <Button
                     color="start"
                     delay={0.2}
@@ -70,7 +73,7 @@ class LevelFour extends React.Component {
     
     clicker () {
         this.setState({
-            exitTest : true
+            rippleTest : true
         });
         if(this.firstFlag) {
             this.setState({
@@ -100,26 +103,19 @@ class LevelFour extends React.Component {
 
     winner (ops) {
         var win = Math.floor(Math.random()*ops);
-        console.log('win: ' + win);
-
         for(var i=0 ; i<ops ; i++) {
-            this.exitArray[i] = false;
+            this.rippleArray[i] = false;
         }
-        this.exitArray[win] = true;
+        this.rippleArray[win] = true;
 
         this.setState({
-            exit : {
-                0 : this.exitArray[0],
-                1 : this.exitArray[1],
-                2 : this.exitArray[2],
-                3 : this.exitArray[3]
+            ripple : {
+                0 : this.rippleArray[0],
+                1 : this.rippleArray[1],
+                2 : this.rippleArray[2],
+                3 : this.rippleArray[3]
             }
         });
-        // this.setState({
-        //     exit : {
-        //         [win] : true
-        //     }
-        // })
         return win;
     }
 
@@ -128,3 +124,6 @@ class LevelFour extends React.Component {
     }
 }
 export default LevelFour;
+
+
+{/*  */}
