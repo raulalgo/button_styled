@@ -13,7 +13,7 @@ import TogglerButton    from    '../Buttons/TogglerButton';
 class LevelFour extends React.Component {
     pointer;
     firstFlag;
-    rippleArray;
+    exitArray;
 
     exitTest
 
@@ -24,7 +24,7 @@ class LevelFour extends React.Component {
         this.clicker = this.clicker.bind(this);
         this.winner = this.winner.bind(this);
 
-        this.rippleArray = [];
+        this.exitArray = [];
 
         this.state = {
             light : {
@@ -33,7 +33,7 @@ class LevelFour extends React.Component {
                 2   :   false,
                 3   :   false
             },
-            ripple : {
+            exit : {
                 0   :   false,
                 1   :   false,
                 2   :   false,
@@ -50,7 +50,11 @@ class LevelFour extends React.Component {
     render(){
         return (
             <SingleColumn>
-                <TogglerButton exit={this.state.exitTest} />
+                <TogglerButton on exit={this.state.exit[0]} lightOff={!this.state.light[0]} delay={0} />
+                <TogglerButton on exit={this.state.exit[1]} lightOff={!this.state.light[1]} delay={0.05} />
+                <TogglerButton on exit={this.state.exit[2]} lightOff={!this.state.light[2]} delay={0.1} />
+                <TogglerButton on exit={this.state.exit[3]} lightOff={!this.state.light[3]} delay={0.15} />
+
                 <Button
                     color="start"
                     delay={0.2}
@@ -99,20 +103,20 @@ class LevelFour extends React.Component {
         console.log('win: ' + win);
 
         for(var i=0 ; i<ops ; i++) {
-            this.rippleArray[i] = false;
+            this.exitArray[i] = false;
         }
-        this.rippleArray[win] = true;
+        this.exitArray[win] = true;
 
         this.setState({
-            ripple : {
-                0 : this.rippleArray[0],
-                1 : this.rippleArray[1],
-                2 : this.rippleArray[2],
-                3 : this.rippleArray[3]
+            exit : {
+                0 : this.exitArray[0],
+                1 : this.exitArray[1],
+                2 : this.exitArray[2],
+                3 : this.exitArray[3]
             }
         });
         // this.setState({
-        //     ripple : {
+        //     exit : {
         //         [win] : true
         //     }
         // })
@@ -124,8 +128,3 @@ class LevelFour extends React.Component {
     }
 }
 export default LevelFour;
-
-{/* <TogglerButton on ripple={this.state.ripple[0]} lightOff={!this.state.light[0]} delay={0} />
-<TogglerButton on ripple={this.state.ripple[1]} lightOff={!this.state.light[1]} delay={0.05} />
-<TogglerButton on ripple={this.state.ripple[2]} lightOff={!this.state.light[2]} delay={0.1} />
-<TogglerButton on ripple={this.state.ripple[3]} lightOff={!this.state.light[3]} delay={0.15} /> */}
