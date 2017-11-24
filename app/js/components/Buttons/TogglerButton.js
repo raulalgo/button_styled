@@ -114,12 +114,11 @@ class TogglerButton extends React.Component {
     });
     this.props.onClick();
   }
+  
   setIndexes(examProps){
     if (examProps.on) {
       this.currentIndex = 1;
     }
-
-    console.log(examProps.exit);
     if (examProps.exit) {
       this.maxIndex = 2;
     }
