@@ -20,7 +20,9 @@ class LevelTest extends React.Component {
     render(){
         return (
             <SingleColumn>
-                <ButtonStepper distance={50} />
+                <ButtonStepper steps={3} color='start' delay={0.05} />
+                <ButtonStepper steps={10} color='exit' delay={0.05} />
+                <ButtonStepper steps={20} color='white' delay={0.05} />
             </SingleColumn>
         );
     }
@@ -32,3 +34,8 @@ class LevelTest extends React.Component {
     
 }
 export default LevelTest;
+
+
+// <ButtonStepper delay={0.1} steps={3} />
+// <ButtonStepper delay={0.15} steps={5} />
+// <ButtonStepper delay={0.2} steps={6} />

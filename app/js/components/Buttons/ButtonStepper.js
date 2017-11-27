@@ -17,10 +17,10 @@ const TestGrid = styled.div`
 
 const TransitionProgress = styled.div`
     height: 100%;
-    background-color: darkmagenta;
+    background-color: ${props => props.theme[props.color]} ;
 
     &.step {
-        width: ${props => props.step}%;
+        width: ${props => props.stepValue}%;
         
         -webkit-transition: width 0.1s ease;
         -moz-transition: width 0.1s ease;
@@ -28,7 +28,7 @@ const TransitionProgress = styled.div`
     }
 
     &.noStep {
-        width: ${props => props.noStep}%;
+        width: ${props => props.noStepValue}%;
 
         -webkit-transition: width 0.1s ease;
         -moz-transition: width 0.1s ease;
@@ -60,7 +60,8 @@ class ButtonStepper extends React.Component {
         this.state = {
             distance : 0,
             class: 'noStep',
-            noStep: 100
+            noStepValue: 100,
+            buttonDeactivate: false
         };
 
        
@@ -70,14 +71,19 @@ class ButtonStepper extends React.Component {
         this.increment = this.stepCalculator(this.props.steps);
         this.clickCount=0;
         this.currentStep = this.props.step;
+
+       // console.log(this.props.theme[this.props.color]);
     }
 
     render(){
         return (
-            <Button onClick={this.stepper} >
+            <Button onClick={this.stepper} 
+                    deactivate={this.state.buttonDeactivate} 
+                    delay={this.props.delay} >
                 <TransitionProgress 
-                    noStep={this.state.noStep} 
-                    step={this.state.step} 
+                    color={this.props.color}
+                    noStepValue={this.state.noStepValue} 
+                    stepValue={this.state.stepValue} 
                     className={this.state.class} 
                     />
             </Button>
@@ -93,18 +99,20 @@ class ButtonStepper extends React.Component {
     }  
     
     stepper() {
-        console.log('stepper');
         this.clickCount++;
         const newWidth = 100 - (this.increment*this.clickCount);
         if((this.clickCount%2)!=0) {
             /* step */
-            this.setState({step : newWidth});
+            this.setState({stepValue : newWidth});
         } 
         else {
             /* nostep */
-            this.setState({noStep : newWidth});
+            this.setState({noStepValue : newWidth});
         }
         this.classToggler();
+        if(this.clickCount==this.props.steps) {
+            this.setState({buttonDeactivate:true});
+        }
     }
 
     classToggler() { 

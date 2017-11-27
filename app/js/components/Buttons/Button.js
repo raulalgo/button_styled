@@ -35,6 +35,7 @@ const fallInac = keyframes`
 `;
 
 const Boton = styled.section`
+  overflow: hidden;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 
   opacity: 0;
@@ -101,6 +102,7 @@ const Boton = styled.section`
     opacity: 0.4;
     animation: ${fallInac} 0.4s backwards;
     animation-delay: ${props => props.delay}s;
+    pointer-events: none;
 
     &.activationSwitch {
       opacity: 1;
@@ -147,7 +149,7 @@ class Button extends React.Component {
           lights={!this.props.lightOff}
           color={this.props.lightOff ? 'grey' : this.props.color}
           active={!this.props.deactivate}
-          onClick={this.props.lightOff ? null : this.props.onClick}
+          onClick={(this.props.lightOff || this.props.deactivate) ? null : this.props.onClick}
           delay={this.props.delay}
           className={this.state.classes + this.activationSwitch + this.props.className}> 
             {this.props.children}
