@@ -50,15 +50,6 @@ const Boton = styled.section`
   ${props => {
 
     var css='';
-
-    /* if(props.color == 'start')
-      css+='background-color:'+props.theme.start+';';
-    else if (props.color == 'exit')
-      css+='background-color:'+props.theme.exit+';';
-    else if (props.color == 'white')
-      css+='background-color:' +props.theme.white + ';';
-    else {
-      css+='background-color:'+props.theme.grey+';';}; */
     
     if(!props.active) {
       css+=
