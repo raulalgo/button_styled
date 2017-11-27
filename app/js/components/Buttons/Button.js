@@ -149,7 +149,9 @@ class Button extends React.Component {
           active={!this.props.deactivate}
           onClick={this.props.lightOff ? null : this.props.onClick}
           delay={this.props.delay}
-          className={this.state.classes + this.activationSwitch + this.props.className} />
+          className={this.state.classes + this.activationSwitch + this.props.className}>
+          {this.props.children}
+        </Boton>
     );
   }
 
