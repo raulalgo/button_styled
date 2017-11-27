@@ -16,7 +16,10 @@ import LevelFrame     from  '../components/LevelFrame';
 // import LevelThree     from  '../components/levels/LevelThree';
 // import LevelFour      from  '../components/levels/LevelFour';
 // import LevelFive      from  '../components/levels/LevelFive';
+import LevelSix       from  '../components/levels/LevelSix';
+
 import LevelTest      from  '../components/levels/LevelTest';
+
 
 
 const propTypes = {
@@ -40,6 +43,7 @@ class LevelPage extends React.Component {
           <Theme>
             <ThemedGame> 
               <LevelFrame currentLevel={this.props.currentLevel} pushLevel={this.pushLevel} >
+                <LevelSix />
                 <LevelTest />
               </LevelFrame>
             </ThemedGame>
