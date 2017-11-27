@@ -43,8 +43,8 @@ class LevelPage extends React.Component {
           <Theme>
             <ThemedGame> 
               <LevelFrame currentLevel={this.props.currentLevel} pushLevel={this.pushLevel} >
-                <LevelSix />
                 <LevelTest />
+                <LevelSix />
               </LevelFrame>
             </ThemedGame>
           </Theme>

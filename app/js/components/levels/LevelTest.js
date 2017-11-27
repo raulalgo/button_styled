@@ -21,6 +21,7 @@ class LevelTest extends React.Component {
     render(){
         return (
             <SingleColumn>
+                <ButtonStepper />
                 <Button color='white' />
                 <Button color='start' />
                 <Button color='exit' />
