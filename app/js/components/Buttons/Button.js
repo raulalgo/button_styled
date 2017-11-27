@@ -45,18 +45,20 @@ const Boton = styled.section`
 
   /* width: 400px; */
 
+  background-color: ${props => props.theme[props.color]};
+
   ${props => {
 
     var css='';
 
-    if(props.color == 'start')
+    /* if(props.color == 'start')
       css+='background-color:'+props.theme.start+';';
     else if (props.color == 'exit')
       css+='background-color:'+props.theme.exit+';';
     else if (props.color == 'white')
       css+='background-color:' +props.theme.white + ';';
     else {
-      css+='background-color:'+props.theme.grey+';';};
+      css+='background-color:'+props.theme.grey+';';}; */
     
     if(!props.active) {
       css+=

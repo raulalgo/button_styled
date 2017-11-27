@@ -6,6 +6,7 @@ import styled       from  'styled-components';
 import SingleColumn from    '../layouts/SingleColumn';
 
 import ButtonStepper    from    '../Buttons/ButtonStepper';
+import Button           from    '../Buttons/Button';
 
 /* Styled Components */
 
@@ -20,7 +21,9 @@ class LevelTest extends React.Component {
     render(){
         return (
             <SingleColumn>
-                <ButtonStepper distance={50} />
+                <Button color='white' />
+                <Button color='start' />
+                <Button color='exit' />
             </SingleColumn>
         );
     }
