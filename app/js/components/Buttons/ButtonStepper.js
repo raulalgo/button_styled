@@ -74,12 +74,11 @@ class ButtonStepper extends React.Component {
 
     render(){
         return (
-            <Button>
+            <Button onClick={this.stepper} >
                 <TransitionProgress 
                     noStep={this.state.noStep} 
                     step={this.state.step} 
                     className={this.state.class} 
-                    onClick={this.stepper}
                     />
             </Button>
         );
