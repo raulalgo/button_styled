@@ -1,16 +1,39 @@
 'use strict';
 
-import React        from  'react';
-import styled       from  'styled-components';
+import React        from    'react';
+import styled       from    'styled-components';
+import {keyframes}  from    'styled-components';
 
 import Button       from    '../Buttons/Button';
 
 /* Styled Components */
-const StyledButton = styled(Button)`
-    /* background: linear-gradient(90deg, red ${props => props.distance}%, rgba(255,0,0,0) ${props => props.distance}%); */
-    background: linear-gradient(90deg, red 50%, rgba(255, 0, 0, 0) 50%);
-    background-position: 80% 50%;
-    transition: all 0.5 ease;
+const TestGrid = styled.div`
+    display: grid;
+    grid-auto-rows: 120px;
+    grid-row-gap: 20px;
+
+`;
+
+const Step = keyframes`
+    from {
+        width: 10%;
+    }
+    to {
+        width: 90%;
+    }
+`;
+
+const Progress = styled.div`
+    height: 100%;
+    width: 70%;
+    background-color: tomato;
+    animation: ${Step} 1s ease forwards;
+`;
+
+const TransitionProgress = styled.div`
+    height: 100%;
+    width: 70%;
+    background-color: darkmagenta;
 `;
 
 /**
@@ -32,7 +55,14 @@ class ButtonStepper extends React.Component {
 
     render(){
         return (
-            <StyledButton distance={this.distance} onClick={this.clicker} />
+            <TestGrid>
+                <Button>
+                    <Progress />
+                </Button>
+                <Button>
+                    <TransitionProgress />
+                </Button>
+            </TestGrid>
         );
     }
 
