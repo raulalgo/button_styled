@@ -5,12 +5,12 @@ import styled       from  'styled-components';
 
 import SingleColumn from    '../layouts/SingleColumn';
 
-import ButtonStepper    from    '../Buttons/ButtonStepper';
-import Button           from    '../Buttons/Button';
+import Button       from    '../Buttons/Button';
+import ToggleButton from    '../Buttons/TogglerButton';
 
 /* Styled Components */
 
-class LevelTest extends React.Component {
+class LevelSix extends React.Component {
     constructor(props) {
         super(props);
 
@@ -21,10 +21,13 @@ class LevelTest extends React.Component {
     render(){
         return (
             <SingleColumn>
-                <Button color='white' />
+                <ToggleButton />
+                <ToggleButton />
+                <ToggleButton />
                 <Button color='start' />
-                <Button color='exit' />
+                <Button color='start' />
             </SingleColumn>
+            
         );
     }
 
@@ -34,9 +37,4 @@ class LevelTest extends React.Component {
     }
     
 }
-export default LevelTest;
-
-
-// <ButtonStepper delay={0.1} steps={3} />
-// <ButtonStepper delay={0.15} steps={5} />
-// <ButtonStepper delay={0.2} steps={6} />
+export default LevelSix;

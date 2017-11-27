@@ -22,7 +22,7 @@ const fall = keyframes`
 const fallInac = keyframes`
   0%    {
     opacity: 0;
-    transform: scale(1.3);
+    transform: scale(1.3)
   }
   50%  {
     opacity: 0.3;
@@ -35,6 +35,7 @@ const fallInac = keyframes`
 `;
 
 const Boton = styled.section`
+  overflow: hidden;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 
   opacity: 0;
@@ -45,18 +46,11 @@ const Boton = styled.section`
 
   /* width: 400px; */
 
+  background-color: ${props => props.theme[props.color]};
+
   ${props => {
 
     var css='';
-
-    if(props.color == 'start')
-      css+='background-color:'+props.theme.start+';';
-    else if (props.color == 'exit')
-      css+='background-color:'+props.theme.exit+';';
-    else if (props.color == 'white')
-      css+='background-color:' +props.theme.white + ';';
-    else {
-      css+='background-color:'+props.theme.grey+';';};
     
     if(!props.active) {
       css+=
@@ -101,6 +95,7 @@ const Boton = styled.section`
     opacity: 0.4;
     animation: ${fallInac} 0.4s backwards;
     animation-delay: ${props => props.delay}s;
+    pointer-events: none;
 
     &.activationSwitch {
       opacity: 1;
@@ -147,11 +142,11 @@ class Button extends React.Component {
           lights={!this.props.lightOff}
           color={this.props.lightOff ? 'grey' : this.props.color}
           active={!this.props.deactivate}
-          onClick={this.props.lightOff ? null : this.props.onClick}
+          onClick={(this.props.lightOff || this.props.deactivate) ? null : this.props.onClick}
           delay={this.props.delay}
-          className={this.state.classes + this.activationSwitch + this.props.className}>
-          {this.props.children}
-        </Boton>
+          className={this.state.classes + this.activationSwitch + this.props.className}> 
+            {this.props.children}
+          </Boton>
     );
   }
 
@@ -217,4 +212,3 @@ Button.defaultProps = {
 };
 
 export default Button;
-
