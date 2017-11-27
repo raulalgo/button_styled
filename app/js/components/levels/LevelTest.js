@@ -19,9 +19,9 @@ class LevelTest extends React.Component {
 
     render(){
         return (
-            <div>
+            <SingleColumn>
                 <ButtonStepper distance={50} />
-            </div>
+            </SingleColumn>
         );
     }
 

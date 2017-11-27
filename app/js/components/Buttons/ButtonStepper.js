@@ -14,36 +14,25 @@ const TestGrid = styled.div`
 
 `;
 
-const Step = keyframes`
-    from {
-        width: 10%;
-    }
-    to {
-        width: 90%;
-    }
-`;
-
-const Progress = styled.div`
-    height: 100%;
-    width: 70%;
-    background-color: tomato;
-    animation: ${Step} 1s ease forwards;
-`;
 
 const TransitionProgress = styled.div`
     height: 100%;
-    width: ${props => props.from}%;
     background-color: darkmagenta;
 
-    -webkit-transition: width 1s ease;
-    -moz-transition: width 1s ease;
-    transition: width 1s ease;
+    &.step {
+        width: ${props => props.step}%;
+        
+        -webkit-transition: width 0.1s ease;
+        -moz-transition: width 0.1s ease;
+        transition: width 0.1s ease;
+    }
 
-    &.move {
-        width: ${props => props.to}%;
-        -webkit-transition: width 1s ease;
-        -moz-transition: width 1s ease;
-        transition: width 1s ease;
+    &.noStep {
+        width: ${props => props.noStep}%;
+
+        -webkit-transition: width 0.1s ease;
+        -moz-transition: width 0.1s ease;
+        transition: width 0.1s ease;
     }
 `;
 
@@ -54,35 +43,45 @@ const TransitionProgress = styled.div`
 class ButtonStepper extends React.Component {
     distance;
     clickCount;
+    increment
+    currentStep;
+    currentIndex;
+    nextIndex;
 
     constructor(props) {
         super(props);
 
-        this.moveToggle = this.moveToggle.bind(this);
+        this.stepper = this.stepper.bind(this);
+        this.stepCalculator = this.stepCalculator.bind(this);
+        this.classToggler = this.classToggler.bind(this);
 
         this.clicker = this.clicker.bind(this);
         this.distance = 10;
         this.state = {
             distance : 0,
-            move: '',
-            from: '20',
-            to: '99'
+            class: 'noStep',
+            noStep: 100
         };
 
+       
+    }
+
+    componentWillMount() {
+        this.increment = this.stepCalculator(this.props.steps);
         this.clickCount=0;
+        this.currentStep = this.props.step;
     }
 
     render(){
         return (
-            <TestGrid>
-                <Button>
-                    <Progress  />
-                </Button>
-                <Button>
-                    <TransitionProgress from={this.state.from} to={this.state.to} className={this.state.move} />
-                </Button>
-                <Button color='start' onClick={this.moveToggle} />
-            </TestGrid>
+            <Button>
+                <TransitionProgress 
+                    noStep={this.state.noStep} 
+                    step={this.state.step} 
+                    className={this.state.class} 
+                    onClick={this.stepper}
+                    />
+            </Button>
         );
     }
 
@@ -94,23 +93,40 @@ class ButtonStepper extends React.Component {
         });
     }  
     
-    moveToggle() {
-        if(this.state.move == '') {
-            this.setState({move:'move'});
+    stepper() {
+        console.log('stepper');
+        this.clickCount++;
+        const newWidth = 100 - (this.increment*this.clickCount);
+        if((this.clickCount%2)!=0) {
+            /* step */
+            this.setState({step : newWidth});
         } 
         else {
-            this.setState({move:''});
+            /* nostep */
+            this.setState({noStep : newWidth});
         }
-        if(this.clickCount == 2) {
-            this.setState({to:'66'});
+        this.classToggler();
+    }
+
+    classToggler() { 
+        if(this.state.class=='noStep'){
+            this.setState({class:'step'});
         }
-        this.clickCount++;
+        else{
+            this.setState({class: 'noStep'});
+        }
+    }
+
+    stepCalculator(steps) {
+        let increment = 100/steps;
+        return increment;
     }
     
 }
 
 ButtonStepper.defaultProps = {
-    color : 'white'
+    color : 'white',
+    steps : 4
 };
 
 export default ButtonStepper;
