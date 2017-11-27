@@ -22,7 +22,7 @@ const fall = keyframes`
 const fallInac = keyframes`
   0%    {
     opacity: 0;
-    transform: scale(1.3);
+    transform: scale(1.3)
   }
   50%  {
     opacity: 0.3;
