@@ -32,8 +32,19 @@ const Progress = styled.div`
 
 const TransitionProgress = styled.div`
     height: 100%;
-    width: 70%;
+    width: ${props => props.from}%;
     background-color: darkmagenta;
+
+    -webkit-transition: width 1s ease;
+    -moz-transition: width 1s ease;
+    transition: width 1s ease;
+
+    &.move {
+        width: ${props => props.to}%;
+        -webkit-transition: width 1s ease;
+        -moz-transition: width 1s ease;
+        transition: width 1s ease;
+    }
 `;
 
 /**
@@ -42,26 +53,35 @@ const TransitionProgress = styled.div`
  */
 class ButtonStepper extends React.Component {
     distance;
+    clickCount;
 
     constructor(props) {
         super(props);
 
+        this.moveToggle = this.moveToggle.bind(this);
+
         this.clicker = this.clicker.bind(this);
         this.distance = 10;
         this.state = {
-            distance : 0
+            distance : 0,
+            move: '',
+            from: '20',
+            to: '99'
         };
+
+        this.clickCount=0;
     }
 
     render(){
         return (
             <TestGrid>
                 <Button>
-                    <Progress />
+                    <Progress  />
                 </Button>
                 <Button>
-                    <TransitionProgress />
+                    <TransitionProgress from={this.state.from} to={this.state.to} className={this.state.move} />
                 </Button>
+                <Button color='start' onClick={this.moveToggle} />
             </TestGrid>
         );
     }
@@ -72,7 +92,21 @@ class ButtonStepper extends React.Component {
         this.setState({
             distance : this.distance
         });
-    }   
+    }  
+    
+    moveToggle() {
+        if(this.state.move == '') {
+            this.setState({move:'move'});
+        } 
+        else {
+            this.setState({move:''});
+        }
+        if(this.clickCount == 2) {
+            this.setState({to:'66'});
+        }
+        this.clickCount++;
+    }
+    
 }
 
 ButtonStepper.defaultProps = {
