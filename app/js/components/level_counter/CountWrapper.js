@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-import React    from  'react'
-import CountItem  from  './CountItem'
+import React    from  'react';
+import CountItem  from  './CountItem';
 
 class CountWrapper extends React.Component {
   counter_temp;
@@ -13,8 +13,8 @@ class CountWrapper extends React.Component {
     super(props);
 
   //  this.counter_temp = 10;
-    this.counter_string = []
-    console.log("In CountWrapper the currentLevel is: " + this.props.currentLevel);
+    this.counter_string = [];
+    console.log('In CountWrapper the currentLevel is: ' + this.props.currentLevel);
 
   }
 
@@ -26,7 +26,7 @@ class CountWrapper extends React.Component {
     this.counter_string = [];
     for(var i = 0 ; i < this.props.currentLevel+1 ; i++)
     {
-      this.counter_string[i] = <CountItem />
+      this.counter_string[i] = <CountItem />;
     }
 
     return (
@@ -35,8 +35,8 @@ class CountWrapper extends React.Component {
           {this.counter_string}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default CountWrapper
+export default CountWrapper;
