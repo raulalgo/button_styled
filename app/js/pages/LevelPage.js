@@ -7,7 +7,6 @@ import DocumentTitle from 'react-document-title';
 
 import styled         from 'styled-components';
 
-import Theme          from  '../components/Theme';
 import ThemedGame     from  '../components/ThemedGame';
 import LevelFrame     from  '../components/LevelFrame';
 
@@ -40,19 +39,13 @@ class LevelPage extends React.Component {
     return (
       <DocumentTitle title="Level">
         <section className="level-page">
-          <Theme>
-            <ThemedGame> 
-              <LevelFrame currentLevel={this.props.currentLevel} pushLevel={this.pushLevel} >
-                <LevelOne />
-                <LevelTwo />
-                <LevelThree />
-                <LevelFour />
-                <LevelFive />
-                <LevelSix />
-                <LevelTest />
-              </LevelFrame>
-            </ThemedGame>
-          </Theme>
+          <ThemedGame> 
+            <LevelFrame currentLevel={this.props.currentLevel} pushLevel={this.pushLevel} >
+              <LevelOne />
+              <LevelTwo />
+              <LevelThree />
+            </LevelFrame>
+          </ThemedGame>
         </section>
       </DocumentTitle>
     );

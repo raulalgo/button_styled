@@ -8,6 +8,10 @@ import SingleColumn from    '../layouts/SingleColumn';
 import ButtonStepper    from    '../Buttons/ButtonStepper';
 import Button           from    '../Buttons/Button';
 
+import CountItem        from    '../level_counter/CountItem';
+import CountWrapper     from    '../level_counter/CountWrapper';
+
+
 /* Styled Components */
 
 class LevelTest extends React.Component {
@@ -21,10 +25,6 @@ class LevelTest extends React.Component {
     render(){
         return (
             <SingleColumn>
-                <ButtonStepper />
-                <Button color='white' />
-                <Button color='start' deactivate />
-                <Button color='exit' />
             </SingleColumn>
         );
     }

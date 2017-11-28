@@ -10,6 +10,7 @@ import {keyframes} from 'styled-components';
 const red = '#E21F3F';
 const orange = '#FF8500';
 const blue = '#2F80ED';
+const lightGrey = '#EDF3F7';
 const greyishBlue = '#AABCCC';
 const white = '#FFF';
 const grey = '#CCC';
@@ -39,6 +40,7 @@ const theme = {
   buttonHeight: buttonHeight,
   red: red,
   greyishBlue: greyishBlue,
+  lightGrey: lightGrey,
   fall: fall
 };
 

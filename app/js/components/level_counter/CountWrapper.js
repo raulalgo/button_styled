@@ -1,14 +1,24 @@
 'use strict';
 
 import React    from  'react';
+import styled   from  'styled-components';
+
 import CountItem  from  './CountItem';
+
+const Center = styled.div`
+  text-align: center;
+`;
+
+const Centered = styled.div`
+  display: inline-block;
+`;
 
 class CountWrapper extends React.Component {
   counter_temp;
   counter_string;
 
   constructor(props) {
-
+    console.log('constructing CountWrapper')
 
     super(props);
 
@@ -30,11 +40,11 @@ class CountWrapper extends React.Component {
     }
 
     return (
-      <div className="center">
-        <div className="centered">
+      <Center>
+        <Centered>
           {this.counter_string}
-        </div>
-      </div>
+        </Centered>
+      </Center>
     );
   }
 }

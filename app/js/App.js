@@ -7,6 +7,8 @@ import CurrentUserStore   from './stores/CurrentUserStore';
 import Header             from './components/Header';
 import Footer             from './components/Footer';
 
+import Theme              from './components/Theme';
+
 const propTypes = {
   params: React.PropTypes.object,
   query: React.PropTypes.object,
@@ -68,14 +70,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-
-        <Header pushLevel={this.pushLevel} currentLevel={this.state.currentLevel} />
-        {this.renderChildren()}
-
-        <Footer />
-
-      </div>
+      <Theme>
+        <div>
+  
+            <Header pushLevel={this.pushLevel} currentLevel={this.state.currentLevel} />
+            {this.renderChildren()}
+    
+            <Footer />
+  
+        </div>
+      </Theme>
     );
   }
 
