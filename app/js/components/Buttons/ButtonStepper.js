@@ -79,7 +79,9 @@ class ButtonStepper extends React.Component {
         return (
             <Button onClick={this.stepper} 
                     deactivate={this.state.buttonDeactivate} 
-                    delay={this.props.delay} >
+                    delay={this.props.delay}
+                    lightOff={this.props.lightOff}
+                    deactivate={this.props.deactivate} >
                 <TransitionProgress 
                     color={this.props.color}
                     noStepValue={this.state.noStepValue} 
@@ -133,7 +135,12 @@ class ButtonStepper extends React.Component {
 
 ButtonStepper.defaultProps = {
     color : 'white',
-    steps : 4
+    steps : 4,
+    lights: true,
+    lightOff: false,
+    deactivate: false,
+    transition: true,
+    delay: 0
 };
 
 export default ButtonStepper;

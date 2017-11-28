@@ -95,7 +95,6 @@ const Boton = styled.section`
     opacity: 0.4;
     animation: ${fallInac} 0.4s backwards;
     animation-delay: ${props => props.delay}s;
-    pointer-events: none;
 
     &.activationSwitch {
       opacity: 1;

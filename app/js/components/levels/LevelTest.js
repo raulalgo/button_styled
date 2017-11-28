@@ -23,7 +23,7 @@ class LevelTest extends React.Component {
             <SingleColumn>
                 <ButtonStepper />
                 <Button color='white' />
-                <Button color='start' />
+                <Button color='start' deactivate />
                 <Button color='exit' />
             </SingleColumn>
         );
