@@ -51,6 +51,7 @@
     "react-addons-test-utils": "^0.14.8",
     "react-document-title": "^2.0.3",
     "react-dom": "^0.14.9",
+    "react-motion": "^0.5.2",
     "react-router": "^1.0.3",
     "reflux": "^0.3.1",
     "run-sequence": "^1.2.2",

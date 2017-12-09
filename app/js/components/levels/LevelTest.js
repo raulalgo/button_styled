@@ -2,6 +2,7 @@
 
 import React        from  'react';
 import styled       from  'styled-components';
+import {Motion, spring} from    'react-motion';
 
 import SingleColumn from    '../layouts/SingleColumn';
 
@@ -24,8 +25,9 @@ class LevelTest extends React.Component {
 
     render(){
         return (
-            <SingleColumn>
-            </SingleColumn>
+           <Motion defaultStyle={{x:0}} style={{x:spring(10)}} >
+                {value => <div>{value.x}</div>}
+           </Motion>
         );
     }
 
@@ -41,3 +43,11 @@ export default LevelTest;
 // <ButtonStepper delay={0.1} steps={3} />
 // <ButtonStepper delay={0.15} steps={5} />
 // <ButtonStepper delay={0.2} steps={6} />
+
+//<Button color='start' />
+//<Button color='white' />
+//<Button color='white' />
+//<Button color='exit' />
+
+//  <SingleColumn>
+//</SingleColumn>
