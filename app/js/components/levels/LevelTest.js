@@ -2,7 +2,7 @@
 
 import React        from  'react';
 import styled       from  'styled-components';
-import {Motion, spring} from    'react-motion';
+import {Motion, spring, presets} from    'react-motion';
 
 import SingleColumn from    '../layouts/SingleColumn';
 
@@ -11,9 +11,15 @@ import Button           from    '../Buttons/Button';
 
 import CountItem        from    '../level_counter/CountItem';
 import CountWrapper     from    '../level_counter/CountWrapper';
+import MotionTest from '../Test/MotionTest';
 
 
 /* Styled Components */
+const Rojo = styled.div`
+    background: red;
+    height: 100px;
+    width: 100px;
+`;
 
 class LevelTest extends React.Component {
     constructor(props) {
@@ -25,9 +31,7 @@ class LevelTest extends React.Component {
 
     render(){
         return (
-           <Motion defaultStyle={{x:0}} style={{x:spring(10)}} >
-                {value => <div>{value.x}</div>}
-           </Motion>
+            <MotionTest />
         );
     }
 
