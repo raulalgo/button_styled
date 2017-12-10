@@ -44,6 +44,9 @@ class LevelPage extends React.Component {
               <LevelOne />
               <LevelTwo />
               <LevelThree />
+              <LevelFour />
+              <LevelFive />
+              <LevelSix />
             </LevelFrame>
           </ThemedGame>
         </section>

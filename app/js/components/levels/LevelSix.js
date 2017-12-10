@@ -18,7 +18,7 @@ class LevelSix extends React.Component {
 
         this.resolve = this.resolve.bind(this);
         this.move = this.move.bind(this);
-        this.moveUp = this.moveUp.bind(this);
+        // this.moveUp = this.moveUp.bind(this);
         
         this.state = {
             buttonDownDeactivate : false,
