@@ -12,6 +12,8 @@ import Button           from    '../Buttons/Button';
 import CountItem        from    '../level_counter/CountItem';
 import CountWrapper     from    '../level_counter/CountWrapper';
 import MotionTest from '../Test/MotionTest';
+import MotionButton from '../Test/MotionButton';
+import MotTraTest   from    '../Test/MotionTransitionTest';
 
 
 /* Styled Components */
@@ -31,7 +33,7 @@ class LevelTest extends React.Component {
 
     render(){
         return (
-            <MotionTest />
+            <MotTraTest />
         );
     }
 
